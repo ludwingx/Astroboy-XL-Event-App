@@ -1,0 +1,83 @@
+/* styles/Navbar.module.css */
+
+.nav {
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.linksContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+  margin: 0 1rem; /* Espacio entre los enlaces */
+  position: relative;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.link:hover {
+  color: gray;
+  transform: scale(1.1); /* Aumenta el tamaño del enlace en hover */
+}
+
+.link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: gray;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -5px; /* Ajusta la posición del subrayado */
+  left: 0;
+}
+
+.link:hover::after {
+  width: 100%; /* Expande el subrayado en hover */
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+}
+
+.menuButton svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+.mobileMenuOpen {
+  display: block;
+}
+
+.mobileLink {
+  display: block;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  transition: color 0.3s;
+  margin: 1rem 0; /* Espacio entre los enlaces móviles */
+}
+
+.mobileLink:hover {
+  color: gray;
+}
