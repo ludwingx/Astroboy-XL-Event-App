@@ -1,83 +1,39 @@
-/* styles/Navbar.module.css */
-
-.nav {
-  background-color: white;
-  padding: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.linksContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
-
-.link {
+/* Estilo de los enlaces en la barra de navegación */
+.navLink {
+  position: relative;
   color: black;
   text-decoration: none;
-  margin: 0 1rem; /* Espacio entre los enlaces */
-  position: relative;
-  transition: color 0.3s, transform 0.3s;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-size: 1rem; /* Tamaño de fuente en pantallas grandes */
 }
 
-.link:hover {
-  color: gray;
-  transform: scale(1.1); /* Aumenta el tamaño del enlace en hover */
-}
-
-.link::after {
+/* Línea debajo del enlace en hover */
+.navLink::after {
   content: '';
-  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -2px;
   width: 0;
   height: 2px;
-  background: gray;
-  transition: width 0.3s;
-  position: absolute;
-  bottom: -5px; /* Ajusta la posición del subrayado */
-  left: 0;
+  background-color: gray; /* Color de la línea por defecto */
+  transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-.link:hover::after {
-  width: 100%; /* Expande el subrayado en hover */
+.navLink:hover::after {
+  width: 100%;
+  background-color: red; /* Color de la línea en hover */
 }
 
-.menuButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: black;
-}
+/* Ajustes para pantallas móviles */
+@media (max-width: 768px) {
+  .navLink {
+    font-size: 0.875rem; /* Tamaño de fuente más pequeño en pantallas móviles */
+  }
 
-.menuButton svg {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.mobileMenu {
-  display: none;
-}
-
-.mobileMenuOpen {
-  display: block;
-}
-
-.mobileLink {
-  display: block;
-  color: black;
-  text-decoration: none;
-  text-align: center;
-  transition: color 0.3s;
-  margin: 1rem 0; /* Espacio entre los enlaces móviles */
-}
-
-.mobileLink:hover {
-  color: gray;
+  /* Asegura que los enlaces se alineen verticalmente en pantallas móviles */
+  .md\\:hidden {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Espacio entre los enlaces */
+  }
 }

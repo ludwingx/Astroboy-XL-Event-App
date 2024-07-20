@@ -1,7 +1,7 @@
 // data/links.ts
 export const btnsLinks = [
   {
-    href: '/tickets',
+    href: '/entradas',
     text: 'Compra Entradas'
   },
   {

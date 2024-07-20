@@ -1,0 +1,45 @@
+/* styles/tickets.module.css */
+.container {
+  background-color: var(--color-neutral-1);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'FuturaBold', sans-serif;
+  padding: 8rem 0 0 0; /* Asegura un espaciado interno adecuado */
+  margin: 0; /* Elimina márgenes externos */
+  box-sizing: border-box; /* Incluye padding en el tamaño total del contenedor */
+}
+
+.title {
+  font-size: 2rem; /* Ajusta el tamaño del texto según sea necesario */
+  margin-bottom: 1rem; /* Ajusta el margen inferior según sea necesario */
+}
+
+.buttonsContainer {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column; /* Asegura que los botones se apilen verticalmente */
+  gap: 1rem; /* Espacio entre los botones */
+}
+
+.button {
+  background-color: var(--color-text-primary); /* Usa la variable de color definida */
+  color: var(--color-neutral-1); /* Usa la variable de color definida */
+  padding: 1rem ;
+  text-align: center;
+  font-size: 1rem;
+  text-decoration: none;
+  font-family: 'Arial', sans-serif;
+  border: 2px solid var(--color-text-primary); /* Usa la variable de color definida */
+  border-radius: 0.5rem; /* Ajusta el radio del borde según sea necesario */
+  transition: all 0.3s ease; /* Transición suave para efectos */
+}
+
+.button:hover {
+  background-color: var(--color-primary); /* Cambia el color de fondo al pasar el cursor */
+  color: var(--color-neutral-1); /* Cambia el color del texto al pasar el cursor */
+  border: 2px solid var(--color-primary);
+  transform: scale(1.05); /* Añade un efecto de zoom suave */
+}

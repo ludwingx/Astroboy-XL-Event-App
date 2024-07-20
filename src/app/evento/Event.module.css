@@ -30,17 +30,19 @@
   display: flex;
   gap: 1rem; /* Espacio entre los botones */
   margin-bottom: 3rem; /* Ajusta el margen inferior para separar los botones del logo */
+
 }
 
 .button {
   background-color: var(--color-neutral-1); /* Usa la variable de color definida */
-  color: var(--color-text-primary); /* Usa la variable de color definida */
+  color: var(--color-primary); /* Usa la variable de color definida */
   padding: 0.75rem 1.5rem;
   text-align: center;
   font-size: 1rem;
   text-decoration: none;
   font-family: 'Arial', sans-serif;
   border: 2px solid var(--color-primary); /* Usa la variable de color definida */
+  border-radius: 0.5rem;
 }
 
 .button:hover {
@@ -53,7 +55,7 @@
 }
 
 .logo {
-  margin-top: 4rem; /* Ajusta el margen superior para bajar el logo */
+  margin-top: 3rem; /* Ajusta el margen superior para bajar el logo */
   /*animation al aparecer*/
 
 }

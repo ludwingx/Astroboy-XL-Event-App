@@ -1,0 +1,107 @@
+.container {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.merchGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  max-width: 100%;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: opacity 0.5s ease, border 0.3s ease;
+}
+
+.cardSelected {
+  border: 2px solid #1976d2;
+}
+
+.cardDisabled {
+  opacity: 0.6;
+}
+
+.cardImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.cardContent {
+  padding: 1rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.button {
+  width: 100%;
+  max-width: 200px;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #1976d2;
+  color: white;
+  cursor: pointer;
+}
+
+.linkButton {
+  background-color: transparent;
+  border: 1px solid #1976d2;
+  color: #1976d2;
+}
+
+.qrCode {
+  max-width: 100%;
+  height: auto;
+}
+
+.qrButton {
+  margin-top: 2rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #1976d2;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .card {
+    max-width: 100%;
+  }
+
+  .button, .linkButton, .qrButton {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 14px;
+  }
+}
+.whatsappLink {
+  color: #25D366; /* Color del enlace (puedes cambiarlo según tu preferencia) */
+  text-decoration: underline; /* Añade un subrayado al pasar el cursor */
+  font-weight: bold; /* Puedes ajustar el peso de la fuente si lo deseas */
+}
+
+.whatsappLink:hover {
+  color: #128C7E; /* Color del enlace al pasar el cursor */
+  text-decoration: underline; /* Añade un subrayado al pasar el cursor */
+}
+
+.number {
+  text-decoration: line-through; /* Sobrelinea el texto del número */
+  font-weight: bold; /* Opcional: Para hacer que el texto sea más prominente */
+}
