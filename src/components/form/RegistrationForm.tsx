@@ -1,63 +1,90 @@
+// components/form/RegistrationForm.tsx
 'use client';
 
-import React, { useState } from 'react';
-import { Button, TextField, Box } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { TextField, Button, Box, Typography } from '@mui/material';
+import styles from './RegistrationForm.module.css';
 
-interface RegistrationFormProps {
-  onSubmit: (formData: any) => void;
-  category: string; // Agrega la prop de categoría
+interface FormData {
+  name: string;
+  lastname: string;
+  email: string;
+  phone: string;
+  selectedOption?: string;
 }
 
-const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSubmit, category }) => {
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
+interface RegistrationFormProps {
+  selectedOption?: string | null;
+}
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    onSubmit({ name, lastName, phone, email, category }); // Incluye la categoría
+export default function RegistrationForm({ selectedOption }: RegistrationFormProps) {
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    lastname: '',
+    email: '',
+    phone: '',
+    selectedOption: selectedOption || '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Formulario enviado', formData);
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit}>
+    <Box component="form" onSubmit={handleSubmit} className={styles.formContainer}>
+      <h2 className={styles.title}>Registro de Entrada</h2>
+      {formData.selectedOption && (
+        <Typography variant="h6" className={styles.selectedOption}>
+          Opción seleccionada: {formData.selectedOption}
+        </Typography>
+      )}
       <TextField
-        fullWidth
         label="Nombre"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        variant="outlined"
+        fullWidth
         margin="normal"
       />
       <TextField
+        label="Apellidos"
+        name="lastname"
+        value={formData.lastname}
+        onChange={handleChange}
+        variant="outlined"
         fullWidth
-        label="Apellido"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-        required
         margin="normal"
       />
       <TextField
+        label="Correo Electrónico"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        variant="outlined"
         fullWidth
+        margin="normal"
+      />
+      <TextField
         label="Teléfono"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-        required
-        margin="normal"
-      />
-      <TextField
+        name="phone"
+        value={formData.phone}
+        onChange={handleChange}
+        variant="outlined"
         fullWidth
-        label="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
         margin="normal"
       />
-      <Button type="submit" variant="contained">
-        Enviar
+      <Button type="submit" variant="contained" color="primary" className={styles.submitButton}>
+        Registrarse
       </Button>
     </Box>
   );
-};
-
-export default RegistrationForm;
+}

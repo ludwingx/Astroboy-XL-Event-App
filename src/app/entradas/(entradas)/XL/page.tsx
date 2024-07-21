@@ -1,5 +1,5 @@
 'use client';
-
+// pages/XL.tsx
 import React, { useState, useEffect } from 'react';
 import { Button, Container, Typography, Box, Card, CardContent, CardMedia } from '@mui/material';
 import Link from 'next/link';
@@ -7,7 +7,7 @@ import RegistrationForm from '@/components/form/RegistrationForm';
 import { ticketsLinks } from '@/utils/ticketsLinks';
 import { FaWhatsapp } from "react-icons/fa";
 import styles from './XL.module.css';
-// Opciones de merch
+
 const merchOptions = [
   { id: '1', name: 'Polera Blanca', image: '/images/poleraBlancaXL.svg' },
   { id: '2', name: 'Polera Negra', image: '/images/poleraNegraXL.svg' },
@@ -19,7 +19,7 @@ const merchOptions = [
 export default function XL() {
   const [selectedMerch, setSelectedMerch] = useState<string | null>(null);
   const [formVisible, setFormVisible] = useState(false);
-  const [showQRCode, setShowQRCode] = useState(false); // Estado para mostrar el QR
+  const [showQRCode, setShowQRCode] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -40,16 +40,15 @@ export default function XL() {
 
   const handleFormSubmit = (formValues: any) => {
     console.log('Formulario enviado para XL', { ...formValues, merch: selectedMerch });
-    setFormVisible(false); // Oculta el formulario después de enviar
-    setShowQRCode(true); // Muestra el QR
+    setFormVisible(false);
+    setShowQRCode(true);
   };
 
   const handleDownloadQRCode = () => {
-    // Crea un enlace para descargar la imagen QR
-    const qrImageUrl = '/images/qr-code.png'; // Asegúrate de tener esta imagen en public/images
+    const qrImageUrl = '/images/qr-code.png';
     const link = document.createElement('a');
     link.href = qrImageUrl;
-    link.download = 'qr-code.png'; // Nombre del archivo descargado
+    link.download = 'qr-code.png';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -79,7 +78,6 @@ export default function XL() {
             Elige una opción de merch:
           </Typography>
           <Box display="flex" flexDirection="column" alignItems="center">
-            {/* Grid responsive */}
             <Box display="grid" gridTemplateColumns="repeat(auto-fit, minmax(200px, 1fr))" gap={2} mb={2}>
               {merchOptions.map((merch) => (
                 <Card
@@ -132,8 +130,7 @@ export default function XL() {
         </Box>
       ) : formVisible ? (
         <Box>
-          {/* Formulario */}
-          <RegistrationForm onSubmit={handleFormSubmit} category={''} />
+          <RegistrationForm selectedOption={selectedMerch} />
           <Box textAlign="center" mt={2}>
             <Button
               variant="outlined"

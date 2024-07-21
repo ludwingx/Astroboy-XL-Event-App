@@ -9,14 +9,18 @@ export const metadata: Metadata = {
   description: "Aqui se encuentran las entradas en venta del evento",
 };
 export default function Tickets() {
+  function handleClick(category: string): void {
+    throw new Error('Function not implemented.');
+  }
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Elige tu Entrada</h1>
       <div className={styles.buttonsContainer}>
         {ticketsLinks.map((link) => (
-          <Link key={link.href} href={link.href} className={styles.button}>
+          <button key={link.href} onClick={() => handleClick(link.category)} className={styles.button}>
             {link.text}
-          </Link>
+          </button>
         ))}
       </div>
     </div>
