@@ -1,14 +1,19 @@
 .formContainer {
-  display: flex;
-  flex-direction: column;
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
 }
 
 .title {
-  text-align: center;
   margin-bottom: 20px;
+  text-align: center;
+}
+
+.selectedOption {
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .submitButton {

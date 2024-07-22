@@ -16,6 +16,7 @@ datasource db {
 model Clients {
   id         Int      @id @default(autoincrement())
   name       String
+  lastname   String
   email      String   @unique
   phone      String
   category   String

@@ -1,25 +1,34 @@
-'use client';
-// pages/XL.tsx
-import React, { useState, useEffect } from 'react';
-import { Button, Container, Typography, Box, Card, CardContent, CardMedia } from '@mui/material';
-import Link from 'next/link';
-import RegistrationForm from '@/components/form/RegistrationForm';
-import { ticketsLinks } from '@/utils/ticketsLinks';
-import { FaWhatsapp } from "react-icons/fa";
-import styles from './XL.module.css';
+"use client";
 
+import { useState, useEffect } from "react";
+import {
+  Button,
+  Container,
+  Typography,
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+} from "@mui/material";
+import Link from "next/link";
+import RegistrationForm from "@/components/form/RegistrationForm";
+import { ticketsLinks } from "@/utils/ticketsLinks";
+import { FaWhatsapp } from "react-icons/fa";
+import styles from "./XL.module.css";
+
+// Opciones de merch
 const merchOptions = [
-  { id: '1', name: 'Polera Blanca', image: '/images/poleraBlancaXL.svg' },
-  { id: '2', name: 'Polera Negra', image: '/images/poleraNegraXL.svg' },
-  { id: '3', name: 'Polera XL', image: '/images/poleraXL.svg' },
-  { id: '4', name: 'Gorra XL', image: '/images/gorraXL.svg' },
-  { id: '5', name: 'Vaso XL', image: '/images/vasoXL.svg' },
+  { id: "1", name: "Polera Blanca", image: "/images/poleraBlancaXL.svg" },
+  { id: "2", name: "Polera Negra", image: "/images/poleraNegraXL.svg" },
+  { id: "3", name: "Polera XL", image: "/images/poleraXL.svg" },
+  { id: "4", name: "Gorra XL", image: "/images/gorraXL.svg" },
+  { id: "5", name: "Vaso XL", image: "/images/vasoXL.svg" },
 ];
 
 export default function XL() {
   const [selectedMerch, setSelectedMerch] = useState<string | null>(null);
   const [formVisible, setFormVisible] = useState(false);
-  const [showQRCode, setShowQRCode] = useState(false);
+  const [showQRCode, setShowQRCode] = useState(false); // Estado para mostrar el QR
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -34,21 +43,25 @@ export default function XL() {
     if (selectedMerch) {
       setFormVisible(true);
     } else {
-      alert('Por favor selecciona una opción de merch');
+      alert("Por favor selecciona una opción de merch");
     }
   };
 
   const handleFormSubmit = (formValues: any) => {
-    console.log('Formulario enviado para XL', { ...formValues, merch: selectedMerch });
-    setFormVisible(false);
-    setShowQRCode(true);
+    console.log("Formulario enviado para XL", {
+      ...formValues,
+      merch: selectedMerch,
+    });
+    setFormVisible(false); // Oculta el formulario después de enviar
+    setShowQRCode(true); // Muestra el QR
   };
 
   const handleDownloadQRCode = () => {
-    const qrImageUrl = '/images/qr-code.png';
-    const link = document.createElement('a');
+    // Crea un enlace para descargar la imagen QR
+    const qrImageUrl = "/images/qr-code.png"; // Asegúrate de tener esta imagen en public/images
+    const link = document.createElement("a");
     link.href = qrImageUrl;
-    link.download = 'qr-code.png';
+    link.download = "qr-code.png"; // Nombre del archivo descargado
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -64,11 +77,15 @@ export default function XL() {
     return <div>Cargando...</div>;
   }
 
+  const selectedCategory = "XL"; // Cambia esto a 'L' o 'XXL' según necesites
+
   return (
-    <Container maxWidth="md" sx={{ marginTop: '2rem' }}>
+    <Container maxWidth="md" sx={{ marginTop: "2rem" }}>
       <Box textAlign="center" mb={4}>
         <Typography variant="h6">
-          Elegiste: {ticketsLinks[1].text}
+          Elegiste:{" "}
+          {ticketsLinks.find((link) => link.category === selectedCategory)
+            ?.text || "Ninguna categoría seleccionada"}
         </Typography>
       </Box>
 
@@ -78,26 +95,37 @@ export default function XL() {
             Elige una opción de merch:
           </Typography>
           <Box display="flex" flexDirection="column" alignItems="center">
-            <Box display="grid" gridTemplateColumns="repeat(auto-fit, minmax(200px, 1fr))" gap={2} mb={2}>
+            {/* Grid responsive */}
+            <Box
+              display="grid"
+              gridTemplateColumns="repeat(auto-fit, minmax(200px, 1fr))"
+              gap={2}
+              mb={2}
+            >
               {merchOptions.map((merch) => (
                 <Card
                   key={merch.id}
                   sx={{
                     maxWidth: 345,
-                    cursor: 'pointer',
-                    border: selectedMerch === merch.id ? '2px solid #1976d2' : 'none',
-                    opacity: selectedMerch && selectedMerch !== merch.id ? 0.6 : 1,
-                    transition: 'opacity 0.5s ease, border 0.3s ease',
-                    display: selectedMerch === null || selectedMerch === merch.id ? 'block' : 'none',
+                    cursor: "pointer",
+                    border:
+                      selectedMerch === merch.name ? "2px solid #1976d2" : "none",
+                    opacity:
+                      selectedMerch && selectedMerch !== merch.name ? 0.6 : 1,
+                    transition: "opacity 0.5s ease, border 0.3s ease",
+                    display:
+                      selectedMerch === null || selectedMerch === merch.name
+                        ? "block"
+                        : "none",
                   }}
-                  onClick={() => handleMerchSelect(merch.id)}
+                  onClick={() => handleMerchSelect(merch.name)}
                 >
                   <CardMedia
                     component="img"
                     height="140"
                     image={merch.image}
                     alt={merch.name}
-                    sx={{ objectFit: 'cover' }}
+                    sx={{ objectFit: "cover" }}
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -111,11 +139,11 @@ export default function XL() {
               <Button
                 variant="contained"
                 onClick={handleProceed}
-                sx={{ width: '100%', maxWidth: 200 }}
+                sx={{ width: "100%", maxWidth: 200 }}
               >
                 Continuar
               </Button>
-            </Box>
+            </Box>{" "}
             {selectedMerch && (
               <Box textAlign="center" mt={2}>
                 <Button
@@ -130,26 +158,42 @@ export default function XL() {
         </Box>
       ) : formVisible ? (
         <Box>
-          <RegistrationForm selectedOption={selectedMerch} />
+          {/* Formulario */}
+          <RegistrationForm
+            category={selectedCategory}
+            merch={selectedMerch || ""}
+          />
           <Box textAlign="center" mt={2}>
-            <Button
-              variant="outlined"
-              onClick={handleBackToSelection}
-            >
+            <Button variant="outlined" onClick={handleBackToSelection}>
               Volver a escoger la merch
             </Button>
           </Box>
         </Box>
       ) : showQRCode ? (
         <Box textAlign="center">
-          <img src="/images/qrfake.svg" alt="QR Code" style={{ maxWidth: '100%', height: 'auto' }} />
-          <Button variant="contained" onClick={handleDownloadQRCode} sx={{ mt: 2 }} >
+          <img
+            src="/images/qrfake.svg"
+            alt="QR Code"
+            style={{ maxWidth: "100%", height: "auto" }}
+          />
+          <Button
+            variant="contained"
+            onClick={handleDownloadQRCode}
+            sx={{ mt: 2 }}
+          >
             Descargar QR
           </Button>
-          <p>Envía el comprobante al número de WhatsApp:
-            <a href="https://wa.me/+5491158631851" className={styles.whatsappLink} target="_blank" rel="noopener noreferrer">
-            +54 9 11 5863-1851
-          </a></p>
+          <p>
+            Envía el comprobante al número de WhatsApp:
+            <a
+              href="https://wa.me/+5491158631851"
+              className={styles.whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              +54 9 11 5863-1851
+            </a>
+          </p>
         </Box>
       ) : null}
 

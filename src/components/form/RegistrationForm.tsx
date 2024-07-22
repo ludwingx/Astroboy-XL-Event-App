@@ -1,88 +1,79 @@
-// components/form/RegistrationForm.tsx
-'use client';
-
-import React, { useState, useEffect } from 'react';
-import { TextField, Button, Box, Typography } from '@mui/material';
-import styles from './RegistrationForm.module.css';
-
-interface FormData {
-  name: string;
-  lastname: string;
-  email: string;
-  phone: string;
-  selectedOption?: string;
-}
+import { TextField, Button, Box, Typography } from "@mui/material";
+import styles from "./RegistrationForm.module.css";
+import { createClient } from '@/app/api/actions/actions';
+import { useRouter } from 'next/navigation';
 
 interface RegistrationFormProps {
-  selectedOption?: string | null;
+  category: string;
+  merch: string;
 }
 
-export default function RegistrationForm({ selectedOption }: RegistrationFormProps) {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    lastname: '',
-    email: '',
-    phone: '',
-    selectedOption: selectedOption || '',
-  });
+export default function RegistrationForm({ category, merch }: RegistrationFormProps) {
+  const router = useRouter();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    formData.append('category', category); // Incluye category en los datos del formulario
+    formData.append('merch', merch); // Incluye merch en los datos del formulario
+
+    // Verifica el contenido del formData
+    console.log('Formulario:', Array.from(formData.entries()));
+
+    createClient(formData).then(() => {
+      router.push('/entradas'); // Redirige después de la creación
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Formulario enviado', formData);
-  };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} className={styles.formContainer}>
-      <h2 className={styles.title}>Registro de Entrada</h2>
-      {formData.selectedOption && (
-        <Typography variant="h6" className={styles.selectedOption}>
-          Opción seleccionada: {formData.selectedOption}
-        </Typography>
-      )}
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      className={styles.formContainer}
+    >
+      <Typography variant="h4" className={styles.title}>
+        Registro de Entrada
+      </Typography>
+
       <TextField
         label="Nombre"
+        id="name"
         name="name"
-        value={formData.name}
-        onChange={handleChange}
         variant="outlined"
         fullWidth
         margin="normal"
       />
       <TextField
         label="Apellidos"
+        id="lastname"
         name="lastname"
-        value={formData.lastname}
-        onChange={handleChange}
         variant="outlined"
         fullWidth
         margin="normal"
       />
       <TextField
         label="Correo Electrónico"
+        id="email"
         name="email"
-        value={formData.email}
-        onChange={handleChange}
         variant="outlined"
         fullWidth
         margin="normal"
       />
       <TextField
         label="Teléfono"
+        id="phone"
         name="phone"
-        value={formData.phone}
-        onChange={handleChange}
         variant="outlined"
         fullWidth
         margin="normal"
       />
-      <Button type="submit" variant="contained" color="primary" className={styles.submitButton}>
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        className={styles.submitButton}
+      >
         Registrarse
       </Button>
     </Box>

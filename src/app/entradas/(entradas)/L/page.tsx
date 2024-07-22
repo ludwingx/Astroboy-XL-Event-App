@@ -16,30 +16,25 @@ export default function L() {
 
   const handleFormSubmit = (formData: any) => {
     console.log('Formulario enviado para L', formData);
-    // Aquí puedes manejar el envío del formulario
     setFormSubmitted(true);
   };
 
   if (!isClient) {
-    // Render simple content while the component is hydrating
     return <div>Cargando...</div>;
   }
 
-  // Define la categoría aquí
-  const selectedCategory = 'L'; // O la categoría que desees
+  const selectedCategory = 'L';
 
   return (
     <Container maxWidth="sm" style={{ marginTop: '2rem' }}>
       <Box textAlign="center" mb={4}>
         <Typography variant="h6">
-          Elegiste: {ticketsLinks[0].text}
+          Elegiste: {ticketsLinks.find(link => link.category === selectedCategory)?.text || 'Ninguna categoría seleccionada'}
         </Typography>
       </Box>
       {!formSubmitted ? (
         <RegistrationForm
-          onSubmit={handleFormSubmit}
-          category={selectedCategory} // Pasa la categoría al formulario
-        />
+          category={selectedCategory} />
       ) : (
         <Box textAlign="center">
           <Typography variant="h5" gutterBottom>
