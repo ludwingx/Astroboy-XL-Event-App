@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-
+import Image from 'next/image';
 const CompletedPage: React.FC = () => {
   const router = useRouter();
   const [showMessage, setShowMessage] = useState(false);
@@ -27,7 +27,7 @@ const CompletedPage: React.FC = () => {
           <h1>¡Registro Completado!</h1>
           <p>Tu formulario ha sido enviado exitosamente. Gracias por registrarte.</p>
           {/* Puedes agregar una imagen GIF de Astroboy aquí */}
-          <img src="/path/to/astroboy.gif" alt="Astroboy" />
+          <Image src="https://th.bing.com/th/id/OIP.Ems_FpORknzGXtu3D4UVugHaFF?rs=1&pid=ImgDetMain" alt="Astroboy" width={200} height={200} />
         </div>
       ) : (
         <p>Cargando...</p>
