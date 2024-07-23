@@ -1,7 +1,8 @@
 // src/app/complete/page.tsx
 
-"use client"; // Asegúrate de que el componente se renderice solo en el cliente
+"use client";
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { FC } from 'react';
 import { Container, Typography, Box, Button, Link } from '@mui/material';
@@ -9,6 +10,14 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Image from 'next/image';
 
 const CompletedPage: FC = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <CompletedContent />
+    </Suspense>
+  );
+};
+
+const CompletedContent: FC = () => {
   const searchParams = useSearchParams();
   const category = searchParams.get('category') || 'unknown';
   const merch = searchParams.get('merch') || 'default';
