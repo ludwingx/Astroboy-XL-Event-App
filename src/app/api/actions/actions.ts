@@ -8,7 +8,7 @@ export async function createClient(formData: FormData) {
   const email = formData.get("email")?.toString();
   const phone = formData.get("phone")?.toString();
   const category = formData.get("category")?.toString();
-  const merch = formData.get("merch")?.toString(); // Cambiado de "selectedOption" a "merch"
+  const merch = formData.get("merch")?.toString() || null; // Cambiado de "selectedOption" a "merch"
 
   console.log({ name, lastname, email, phone, merch });
 

@@ -22,6 +22,6 @@ model Clients {
   email      String   @unique
   phone      String
   category   String
-  merch      String
+  merch      String   @default("Ninguno")
   created_at DateTime @default(now())
 }

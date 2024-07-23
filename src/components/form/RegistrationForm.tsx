@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 interface RegistrationFormProps {
   category: string;
-  merch: string;
+  merch: string | undefined;
 }
 
 export default function RegistrationForm({ category, merch }: RegistrationFormProps) {
@@ -15,7 +15,7 @@ export default function RegistrationForm({ category, merch }: RegistrationFormPr
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     formData.append('category', category); // Incluye category en los datos del formulario
-    formData.append('merch', merch); // Incluye merch en los datos del formulario
+    formData.append('merch', merch || ''); // Incluye merch en los datos del formulario
 
     // Verifica el contenido del formData
     console.log('Formulario:', Array.from(formData.entries()));
