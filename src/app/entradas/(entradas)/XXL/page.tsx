@@ -6,6 +6,7 @@ import Link from 'next/link';
 import RegistrationForm from '@/components/form/RegistrationForm';
 import { ticketsLinks } from '@/utils/ticketsLinks';
 import styles from './XXL.module.css';
+import Image from 'next/image';
 export default function XXL() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [showQRCode, setShowQRCode] = useState(false); // Estado para mostrar el QR code
@@ -49,7 +50,7 @@ export default function XXL() {
         <RegistrationForm category='XXL' merch=''/>
       ) : showQRCode ? (
         <Box textAlign="center">
-          <img src="/images/qrfake.svg" alt="QR Code" style={{ maxWidth: '100%', height: 'auto' }} />
+          <Image src="/images/qrfake.svg" alt="QR Code" style={{ maxWidth: '100%', height: 'auto' }} />
           <Button variant="contained" onClick={handleDownloadQRCode} sx={{ mt: 2 }}>
             Descargar QR
           </Button>

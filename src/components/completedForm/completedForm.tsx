@@ -1,7 +1,7 @@
 // components/CompletedForm.tsx
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-
+import Image from 'next/image';
 interface CompletedFormProps {
   formData: {
     name?: string;
@@ -30,7 +30,7 @@ const CompletedForm: React.FC<CompletedFormProps> = ({ formData }) => {
   return (
     <Box>
       <Typography variant="h4">Formulario Completado</Typography>
-      <img src="/astroboy.gif" alt="Astroboy" style={{ width: '100px', height: '100px' }} />
+      <Image src="/astroboy.gif" alt="Astroboy" style={{ width: '100px', height: '100px' }} />
       <Typography><strong>Nombre:</strong> {formData.name}</Typography>
       <Typography><strong>Apellidos:</strong> {formData.lastname}</Typography>
       <Typography><strong>Email:</strong> {formData.email}</Typography>

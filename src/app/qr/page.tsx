@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import { FC } from 'react';
 import { Container, Typography, Box, Button, Link } from '@mui/material';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import Image from 'next/image';
 const CompletedPage: FC = () => {
   const searchParams = useSearchParams();
   const category = searchParams.get('category');
@@ -44,7 +45,7 @@ const CompletedPage: FC = () => {
       <Typography variant="h4" gutterBottom>¡Registro Completado!</Typography>
       <Typography variant="body1">Tu formulario ha sido enviado exitosamente.</Typography>
       <Box mt={2}>
-        <img src={qrImage} alt="QR Code" style={{ maxWidth: '100%', height: 'auto' }} />
+        <Image src={qrImage} alt="QR Code" style={{ maxWidth: '100%', height: 'auto' }} />
       </Box>
       <Typography variant="h6" mt={2}>Precio: {price}</Typography>
       <Typography variant="body1" mt={2}>

@@ -15,7 +15,7 @@ import RegistrationForm from "@/components/form/RegistrationForm";
 import { ticketsLinks } from "@/utils/ticketsLinks";
 import { FaWhatsapp } from "react-icons/fa";
 import styles from "./XL.module.css";
-
+import Image from "next/image";
 // Opciones de merch
 const merchOptions = [
   { id: "1", name: "Polera Blanca", image: "/images/poleraBlancaXL.svg" },
@@ -171,7 +171,7 @@ export default function XL() {
         </Box>
       ) : showQRCode ? (
         <Box textAlign="center">
-          <img
+          <Image
             src="/images/qrfake.svg"
             alt="QR Code"
             style={{ maxWidth: "100%", height: "auto" }}
