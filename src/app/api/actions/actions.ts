@@ -8,33 +8,34 @@ export async function createClient(formData: FormData) {
   const email = formData.get("email")?.toString();
   const phone = formData.get("phone")?.toString();
   const category = formData.get("category")?.toString();
-  const merch = formData.get("merch")?.toString() || null; // Cambiado de "selectedOption" a "merch"
+  const merch = formData.get("merch")?.toString() || null;
 
-  console.log({ name, lastname, email, phone, merch });
-
+  // Verificación de los campos requeridos
   if (!name || !lastname || !email || !phone || !category || !merch) {
     console.error('Faltan campos en el formulario');
-    return;
+    return { status: 'error', message: 'Faltan campos en el formulario' };
   }
 
   try {
+    // Creación del nuevo cliente en la base de datos
     const newClient = await prisma.clients.create({
       data: {
-        name: name,
-        lastname: lastname,
-        email: email,
-        phone: phone,
-        category: category,
-        merch: merch,
+        name,
+        lastname,
+        email,
+        phone,
+        category,
+        merch,
       },
     });
-    console.log(newClient);
-    // La redirección puede ser manejada de una forma diferente en Next.js
-    // redirige a "/entradas" o maneja la navegación de otra manera
-    return { status: 'success', redirect: '/entradas' };
+
+    // Redirigir a "/entradas" después de la creación exitosa
+    // Redirigir utilizando la navegación en Next.js
+    redirect('/entradas');
+
+    return { status: 'success' };
   } catch (error) {
     console.error('Error al crear el cliente:', error);
-    // Manejo de errores aquí
     return { status: 'error', message: 'No se pudo crear el cliente' };
   }
 }
