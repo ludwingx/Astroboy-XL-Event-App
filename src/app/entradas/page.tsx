@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation'; // Cambiado a next/navigation
-import styles from './tickets.module.css'; // Asegúrate de que la ruta sea correcta
-import { ticketsLinks } from '@/utils/ticketsLinks'; // Asegúrate de la ruta correcta
+import { useRouter } from 'next/navigation';
+import styles from './tickets.module.css';
+import { ticketsLinks } from '@/utils/ticketsLinks';
 
 export default function Tickets() {
   const [category, setCategory] = useState<string>('');

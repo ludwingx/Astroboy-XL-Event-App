@@ -34,7 +34,7 @@ export default function L() {
       </Box>
       {!formSubmitted ? (
         <RegistrationForm
-          category={selectedCategory} />
+          category={selectedCategory} merch={''}  />
       ) : (
         <Box textAlign="center">
           <Typography variant="h5" gutterBottom>

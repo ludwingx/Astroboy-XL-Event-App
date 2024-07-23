@@ -6,7 +6,7 @@ export const btnsLinks = [
   },
   {
     href: '/social',
-    text: 'Redes Sociales'
+    text: 'Contribuidores'
   }
 
 ];

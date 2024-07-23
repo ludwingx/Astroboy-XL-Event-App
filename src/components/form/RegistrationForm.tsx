@@ -21,7 +21,11 @@ export default function RegistrationForm({ category, merch }: RegistrationFormPr
     console.log('Formulario:', Array.from(formData.entries()));
 
     createClient(formData).then(() => {
-      router.push('/entradas'); // Redirige después de la creación
+      if (category === 'L') {
+        router.push('/completado'); // Redirige a la página de confirmación
+      } else if (category === 'XL' || category === 'XXL') {
+        router.push(`/qr?category=${category}`); // Redirige a la página con QR pasando la categoría
+      }
     });
   };
 

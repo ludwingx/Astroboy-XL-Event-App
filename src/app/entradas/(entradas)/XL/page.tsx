@@ -80,7 +80,7 @@ export default function XL() {
   const selectedCategory = "XL"; // Cambia esto a 'L' o 'XXL' según necesites
 
   return (
-    <Container maxWidth="md" sx={{ marginTop: "2rem" }}>
+    <Container maxWidth="md" sx={{ marginTop: "2rem", marginBottom: "3rem" }}>
       <Box textAlign="center" mb={4}>
         <Typography variant="h6">
           Elegiste:{" "}
