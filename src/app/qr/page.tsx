@@ -7,13 +7,14 @@ import { FC } from 'react';
 import { Container, Typography, Box, Button, Link } from '@mui/material';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Image from 'next/image';
+
 const CompletedPage: FC = () => {
   const searchParams = useSearchParams();
-  const category = searchParams.get('category');
-  const merch = searchParams.get('merch');
+  const category = searchParams.get('category') || 'unknown'; // Proporciona un valor por defecto
+  const merch = searchParams.get('merch') || 'default'; // Proporciona un valor por defecto
 
-  let qrImage = '';
-  let price = '';
+  let qrImage: string = '';
+  let price: string = '';
 
   switch (category) {
     case 'L':
@@ -24,11 +25,11 @@ const CompletedPage: FC = () => {
         </Container>
       );
     case 'XL':
-      qrImage = '/images/qrfake.svg'; // Imagen del QR para XL
+      qrImage = '/images/qrfake.svg'; // Verifica que esta imagen esté en el directorio `public`
       price = '90 Bs';
       break;
     case 'XXL':
-      qrImage = '/images/qrfake.svg'; // Imagen del QR para XXL
+      qrImage = '/images/qrfake.svg'; // Verifica que esta imagen esté en el directorio `public`
       price = '180 Bs';
       break;
     default:
@@ -45,7 +46,7 @@ const CompletedPage: FC = () => {
       <Typography variant="h4" gutterBottom>¡Registro Completado!</Typography>
       <Typography variant="body1">Tu formulario ha sido enviado exitosamente.</Typography>
       <Box mt={2}>
-        <Image src={qrImage} alt="QR Code" style={{ maxWidth: '100%', height: 'auto' }} />
+        <Image src={qrImage} alt="QR Code" width={150} height={150} /> {/* Define width y height */}
       </Box>
       <Typography variant="h6" mt={2}>Precio: {price}</Typography>
       <Typography variant="body1" mt={2}>
@@ -69,7 +70,6 @@ const CompletedPage: FC = () => {
           rel="noopener noreferrer"
         >
           <WhatsAppIcon sx={{ mr: 1 }} /> Enviar a WhatsApp
-
         </Button>
       </Box>
     </Container>
