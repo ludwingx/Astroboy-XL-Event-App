@@ -46,7 +46,7 @@ export default function XXL() {
         </Typography>
       </Box>
       {!formSubmitted ? (
-        <RegistrationForm onSubmit={handleFormSubmit} category="XXL" merch={null} />
+        <RegistrationForm category='XXL' merch=''/>
       ) : showQRCode ? (
         <Box textAlign="center">
           <img src="/images/qrfake.svg" alt="QR Code" style={{ maxWidth: '100%', height: 'auto' }} />
