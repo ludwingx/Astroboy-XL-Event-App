@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import styles from './Event.module.css';
 import { btnsLinks } from '@/utils/btnsLinks'; // Asegúrate de la ruta correcta
 
+
 const title = 'ASTROBOY XL LISTENING PARTY';
 const subtitle = '- SECRET LOCATION -';
 
@@ -30,6 +31,7 @@ export default function Event() {
       </Box>
       <br />
       <br />
+
     </div>
 
 

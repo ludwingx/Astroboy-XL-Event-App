@@ -4,6 +4,7 @@ import "./globals.css";
 import '../styles/fonts.css';
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
+import MusicPlayer from '@/components/musicplayer/MusicPlayer';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,7 +21,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <header><Navbar/></header>
-        <main>{children}</main>
+        <main>{children}
+        </main>
+
         <footer><Footer/></footer>
       </body>
     </html>

@@ -18,6 +18,7 @@ export default function XXL() {
   const [formVisible, setFormVisible] = useState(false);
   const [showQRCode, setShowQRCode] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
 
   useEffect(() => {
     setIsClient(true);
@@ -89,12 +90,14 @@ export default function XXL() {
                     }}
                     onClick={() => handleKitSelect(kit.name)}
                   >
+                    {imageLoading && <Typography textAlign="center">Cargando...</Typography>}
                     <CardMedia
                       component="img"
                       height="140"
                       image={kit.image}
                       alt={kit.name}
-                      sx={{ objectFit: 'cover' }}
+                      onLoad={() => setImageLoading(false)}
+                      sx={{ objectFit: 'cover', display: imageLoading ? 'none' : 'block' }}
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
@@ -112,12 +115,14 @@ export default function XXL() {
                     }}
                     onClick={() => handleKitSelect(kit.name)}
                   >
+                    {imageLoading && <Typography textAlign="center">Cargando...</Typography>}
                     <CardMedia
                       component="img"
                       height="140"
                       image={kit.image}
                       alt={kit.name}
-                      sx={{ objectFit: 'cover' }}
+                      onLoad={() => setImageLoading(false)}
+                      sx={{ objectFit: 'cover', display: imageLoading ? 'none' : 'block' }}
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">

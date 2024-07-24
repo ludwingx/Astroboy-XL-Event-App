@@ -95,15 +95,21 @@ export default function XL() {
           <Typography variant="h6" gutterBottom textAlign="center">
             Elige una opción de merch:
           </Typography>
-          <Box display="flex" flexDirection="column" alignItems="center">
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          >
             {/* Grid responsive */}
             <Box
               display="grid"
               gridTemplateColumns={{
-                xs: "1fr", // Una columna en pantallas pequeñas
-                sm: "repeat(2, 1fr)", // Dos columnas en pantallas medianas
-                md: "repeat(3, 1fr)", // Tres columnas en pantallas grandes
+                xs: "repeat(auto-fit, minmax(200px, 1fr))", // Para pantallas pequeñas
+                sm: "repeat(auto-fit, minmax(200px, 1fr))", // Para pantallas medianas
+                md: selectedMerch ? "1fr" : "repeat(3, 1fr)", // Para pantallas grandes
               }}
+              justifyContent="center"
+              alignItems="center"
               gap={2}
               mb={2}
             >
@@ -125,6 +131,7 @@ export default function XL() {
                     "&:hover": {
                       boxShadow: "0 0 15px 5px rgba(255, 0, 0, 0.6)", // Red glow effect on hover
                     },
+                    margin: "auto" // Centra la tarjeta
                   }}
                   onClick={() => handleMerchSelect(merch.name)}
                 >
@@ -173,7 +180,7 @@ export default function XL() {
             merch={selectedMerch || ""}
           />
           <Box textAlign="center" mt={2}>
-            <Button variant="outlined" onClick={handleBackToSelection}>
+            <Button variant="outlined" color="error" onClick={handleBackToSelection}>
               Volver a escoger la merch
             </Button>
           </Box>
