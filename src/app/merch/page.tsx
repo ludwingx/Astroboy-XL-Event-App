@@ -4,7 +4,7 @@ import React from 'react';
 import { Container, Typography, Box, Card, CardContent, CardMedia, Grid, Button } from '@mui/material';
 import { FaWhatsapp } from 'react-icons/fa';
 import Link from 'next/link';
-import styles from './Merch.module.css'; // Import the CSS module for animations
+import styles from './merch.module.css';
 
 const merchItems = [
   { id: '1', name: 'Polera Blanca XL', image: '/images/poleraBlancaXL.svg', price: 'xxxx' },
