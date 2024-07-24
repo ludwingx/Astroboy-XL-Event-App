@@ -26,7 +26,7 @@ export default function L() {
   const selectedCategory = 'L';
 
   return (
-    <Container maxWidth="sm" style={{ marginTop: '2rem' }}>
+    <Container maxWidth="sm" style={{ marginTop: '2rem', marginBottom: '4rem' }}>
       <Box textAlign="center" mb={4}>
         <Typography variant="h6">
           Elegiste: {ticketsLinks.find(link => link.category === selectedCategory)?.text || 'Ninguna categoría seleccionada'}
@@ -47,7 +47,7 @@ export default function L() {
       )}
       <Box textAlign="center" mt={2}>
         <Link href="/entradas" passHref>
-          <Button variant="contained">
+          <Button variant="outlined" color="error">
             Volver a la selección de entradas
           </Button>
         </Link>

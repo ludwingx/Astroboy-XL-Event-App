@@ -40,7 +40,7 @@ export default function XXL() {
   }
 
   return (
-    <Container maxWidth="sm" style={{ marginTop: '2rem' }}>
+    <Container maxWidth="sm" style={{ marginTop: '2rem', marginBottom: '4rem' }}>
       <Box textAlign="center" mb={4}>
         <Typography variant="h6">
           Elegiste: {ticketsLinks[2].text} {/* Cambia el índice si es necesario */}
@@ -71,7 +71,7 @@ export default function XXL() {
       )}
       <Box textAlign="center" mt={2}>
         <Link href="/entradas" passHref>
-          <Button variant="contained">
+          <Button variant="outlined" color="error">
             Volver a la selección de entradas
           </Button>
         </Link>

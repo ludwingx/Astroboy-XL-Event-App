@@ -74,14 +74,16 @@ export default function RegistrationForm({ category, merch = 'Ninguno' }: Regist
         fullWidth
         margin="normal"
       />
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        className={styles.submitButton}
-      >
-        Registrarse
-      </Button>
+      <Box display="flex" justifyContent="center">
+        <Button
+          type="submit"
+          variant="contained"
+          color="error"
+          className={styles.submitButton}
+        >
+          Registrarse
+        </Button>
+      </Box>
     </Box>
   );
 }

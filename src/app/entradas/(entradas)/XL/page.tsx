@@ -137,7 +137,7 @@ export default function XL() {
             </Box>
             <Box textAlign="center" mt={2}>
               <Button
-                variant="contained"
+                variant="contained" color="error"
                 onClick={handleProceed}
                 sx={{ width: "100%", maxWidth: 200 }}
               >
@@ -200,7 +200,7 @@ export default function XL() {
       {!formVisible && !showQRCode && (
         <Box textAlign="center" mt={2}>
           <Link href="/entradas" passHref>
-            <Button variant="contained">
+            <Button variant="outlined" color="error">
               Volver a la selección de entradas
             </Button>
           </Link>
