@@ -8,27 +8,29 @@ interface RegistrationFormProps {
   merch: string | undefined;
 }
 
-export default function RegistrationForm({ category, merch }: RegistrationFormProps) {
+export default function RegistrationForm({ category, merch = 'Ninguno' }: RegistrationFormProps) {
   const router = useRouter();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    formData.append('category', category); // Incluye category en los datos del formulario
-    formData.append('merch', merch || ''); // Incluye merch en los datos del formulario
+    formData.append('category', category);
+    formData.append('merch', merch);
 
     // Verifica el contenido del formData
     console.log('Formulario:', Array.from(formData.entries()));
 
-    createClient(formData).then(() => {
+    try {
+      await createClient(formData);
       if (category === 'L') {
-        router.push('/completado'); // Redirige a la página de confirmación
+        router.push('/completado');
       } else if (category === 'XL' || category === 'XXL') {
-        router.push(`/qr?category=${category}`); // Redirige a la página con QR pasando la categoría
+        router.push(`/qr?category=${category}`);
       }
-    });
+    } catch (error) {
+      console.error('Error al crear el cliente:', error);
+    }
   };
-
 
   return (
     <Box

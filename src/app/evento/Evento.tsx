@@ -22,7 +22,7 @@ export default function Event() {
       </div>
 
       <div className={styles.logo}>
-        <Image src="/images/logoTrucho.svg" alt="Logo de Astroboy XL" width={100} height={100} />
+        <Image src="/images/logoTrucho.svg" alt="Logo de Astroboy XL" width={100} height={100} className={styles.image} />
       </div>
       <br />
       <br />
