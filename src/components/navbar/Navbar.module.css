@@ -5,6 +5,7 @@
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
   font-size: 1rem; /* Tamaño de fuente en pantallas grandes */
+  padding: 1rem;
 }
 
 /* Línea debajo del enlace en hover */
@@ -15,15 +16,22 @@
   bottom: -2px;
   width: 0;
   height: 2px;
-  background-color: gray; /* Color de la línea por defecto */
   transition: width 0.3s ease, background-color 0.3s ease;
 }
+.navLink:hover{
 
+  color: red;
+}
 .navLink:hover::after {
   width: 100%;
   background-color: red; /* Color de la línea en hover */
-}
+  /*cambiar de color al texto */
 
+}
+.navLogo:hover{
+  transition: color 0.5s ease, transform 0.5s ease;
+  color:red;
+}
 /* Ajustes para pantallas móviles */
 @media (max-width: 768px) {
   .navLink {

@@ -16,7 +16,7 @@ export default function Navbar() {
       <div className="container mx-auto flex justify-between items-center">
         {/* Menú de navegación para pantallas grandes */}
         <div className="hidden md:flex space-x-8 justify-center w-full">
-          <Link href="/" className={styles.navLink}>EVENTO</Link>
+          <Link style={{ textDecoration: 'none' }} href="/" className={styles.navLink}>EVENTO</Link>
           <Link href="/entradas" className={styles.navLink}>ENTRADAS</Link>
           <Link href="/services" className={styles.navLink}>MERCH</Link>
           <Link href="/contact" className={styles.navLink}>CONTRIBUIDORES</Link>
@@ -25,7 +25,7 @@ export default function Navbar() {
         {/* Menú de navegación para pantallas móviles */}
         <div className="md:hidden flex justify-between w-full">
           <div className="text-black text-2xl font-bold">
-            <Link href="/">Astroboy XL</Link>
+            <Link href="/" className={styles.navLogo}>Astroboy XL</Link>
           </div>
           <button onClick={toggleMenu} className="text-black focus:outline-none transition-transform duration-300 transform hover:scale-110">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

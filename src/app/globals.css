@@ -16,3 +16,23 @@
   --color-text-secondary: #666666;
 
 }
+/* globals.css */
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  padding:0 1rem;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+
+}
