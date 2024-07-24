@@ -17,7 +17,7 @@ export default function Tickets() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Elige tu Entrada</h1>
+      <h1 className={styles.title}>SELECCIONA TU ENTRADA</h1>
       <div className={styles.buttonsContainer}>
         {ticketsLinks.map((link) => (
           <button

@@ -18,8 +18,8 @@ export default function Navbar() {
         <div className="hidden md:flex space-x-8 justify-center w-full">
           <Link style={{ textDecoration: 'none' }} href="/" className={styles.navLink}>EVENTO</Link>
           <Link href="/entradas" className={styles.navLink}>ENTRADAS</Link>
-          <Link href="/services" className={styles.navLink}>MERCH</Link>
-          <Link href="/contact" className={styles.navLink}>CONTRIBUIDORES</Link>
+          <Link href="/merch" className={styles.navLink}>MERCH</Link>
+          <Link href="/social" className={styles.navLink}>CONTRIBUIDORES</Link>
         </div>
 
         {/* Menú de navegación para pantallas móviles */}
@@ -39,9 +39,9 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden mt-2 space-y-2 text-center bg-white shadow-lg transition-transform duration-300 transform translate-y-0 ease-in-out">
           <Link href="/" className={`${styles.navLink} block`}>EVENTO</Link>
-          <Link href="/about" className={`${styles.navLink} block`}>ENTRADAS</Link>
-          <Link href="/services" className={`${styles.navLink} block`}>MERCH</Link>
-          <Link href="/contact" className={`${styles.navLink} block`}>CONTRIBUIDORES</Link>
+          <Link href="/entradas" className={`${styles.navLink} block`}>ENTRADAS</Link>
+          <Link href="/merch" className={`${styles.navLink} block`}>MERCH</Link>
+          <Link href="/social" className={`${styles.navLink} block`}>CONTRIBUIDORES</Link>
         </div>
       )}
     </nav>

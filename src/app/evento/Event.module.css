@@ -57,5 +57,7 @@
 .logo {
   margin-top: 3rem; /* Ajusta el margen superior para bajar el logo */
   /*animation al aparecer*/
-
+}
+.logo:hover{
+  transform: scale(1.1);
 }

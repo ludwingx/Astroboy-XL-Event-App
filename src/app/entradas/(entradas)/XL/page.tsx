@@ -16,6 +16,7 @@ import { ticketsLinks } from "@/utils/ticketsLinks";
 import { FaWhatsapp } from "react-icons/fa";
 import styles from "./XL.module.css";
 import Image from "next/image";
+
 // Opciones de merch
 const merchOptions = [
   { id: "1", name: "Polera Blanca", image: "/images/poleraBlancaXL.svg" },
@@ -35,8 +36,8 @@ export default function XL() {
     setIsClient(true);
   }, []);
 
-  const handleMerchSelect = (merchId: string) => {
-    setSelectedMerch(merchId);
+  const handleMerchSelect = (merchName: string) => {
+    setSelectedMerch(merchName);
   };
 
   const handleProceed = () => {
@@ -98,7 +99,11 @@ export default function XL() {
             {/* Grid responsive */}
             <Box
               display="grid"
-              gridTemplateColumns="repeat(auto-fit, minmax(200px, 1fr))"
+              gridTemplateColumns={{
+                xs: "1fr", // Una columna en pantallas pequeñas
+                sm: "repeat(2, 1fr)", // Dos columnas en pantallas medianas
+                md: "repeat(3, 1fr)", // Tres columnas en pantallas grandes
+              }}
               gap={2}
               mb={2}
             >
@@ -109,14 +114,17 @@ export default function XL() {
                     maxWidth: 345,
                     cursor: "pointer",
                     border:
-                      selectedMerch === merch.name ? "2px solid #1976d2" : "none",
+                      selectedMerch === merch.name ? "2px solid red" : "none",
                     opacity:
                       selectedMerch && selectedMerch !== merch.name ? 0.6 : 1,
-                    transition: "opacity 0.5s ease, border 0.3s ease",
+                    transition: "opacity 0.5s ease, border 0.3s ease, box-shadow 0.3s ease",
                     display:
                       selectedMerch === null || selectedMerch === merch.name
                         ? "block"
                         : "none",
+                    "&:hover": {
+                      boxShadow: "0 0 15px 5px rgba(255, 0, 0, 0.6)", // Red glow effect on hover
+                    },
                   }}
                   onClick={() => handleMerchSelect(merch.name)}
                 >
@@ -135,20 +143,21 @@ export default function XL() {
                 </Card>
               ))}
             </Box>
-            <Box textAlign="center" mt={2}>
-              <Button
-                variant="contained" color="error"
-                onClick={handleProceed}
-                sx={{ width: "100%", maxWidth: 200 }}
-              >
-                Continuar
-              </Button>
-            </Box>{" "}
             {selectedMerch && (
               <Box textAlign="center" mt={2}>
                 <Button
+                  variant="contained"
+                  color="error"
+                  onClick={handleProceed}
+                  sx={{ width: "100%", maxWidth: 200 }}
+                >
+                  Continuar
+                </Button>
+                <Button
                   variant="outlined"
+                  color="error"
                   onClick={() => setSelectedMerch(null)}
+                  sx={{ mt: 2 }}
                 >
                   Volver a seleccionar la merch
                 </Button>
@@ -197,7 +206,7 @@ export default function XL() {
         </Box>
       ) : null}
 
-      {!formVisible && !showQRCode && (
+      {!formVisible && !showQRCode && !selectedMerch && (
         <Box textAlign="center" mt={2}>
           <Link href="/entradas" passHref>
             <Button variant="outlined" color="error">

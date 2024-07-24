@@ -39,8 +39,8 @@ const contributors = [
 export default function Contributors() {
   return (
     <Container maxWidth="md" sx={{ marginTop: "2rem" }}>
-      <Typography variant="h4" gutterBottom align="center">
-        Contribuidores
+      <Typography variant="h5" gutterBottom align="center">
+        CONTRIBUIDORES
       </Typography>
       <Grid container spacing={4}>
         {contributors.map((contributor, index) => (
