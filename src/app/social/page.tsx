@@ -16,10 +16,10 @@ import { FaSoundcloud } from "react-icons/fa"; // Importa el icono de SoundCloud
 const contributors = [
   {
     name: "Tyan XL",
-    instagram: "https://www.instagram.com/tyanxl",
+    instagram: "https://www.instagram.com/tyan.xl/",
     youtube: "https://www.youtube.com/@tyanxl",
-    soundCloud: "https://soundcloud.com/tyanxl",
-    spotify: "https://open.spotify.com/user/3l5o8w5c8b4f7c3y8i3z",
+    soundCloud: "https://soundcloud.com/kid-tyan",
+    spotify: "https://open.spotify.com/intl-es/artist/0CwAkk201F5GOYyUbcv6f9?si=WQPmdH8WQX2muoWFi_sADA&nd=1&dlsi=faa159ebf1df4850",
     photo: "/images/tyanPhoto.svg",
   },
   {
@@ -30,8 +30,8 @@ const contributors = [
   },
   {
     name: "Ludwing",
-    instagram: "https://www.instagram.com/ludwing_dev",
-    photo: "/images/ludwingPhoto.svg",
+    instagram: "https://www.instagram.com/luwin_dev/",
+    photo: "/images/ludwingPhoto.jpg",
   },
   // Añade más contribuidores según sea necesario
 ];
