@@ -48,10 +48,10 @@ export default function XXL() {
   };
 
   const handleDownloadQRCode = () => {
-    const qrImageUrl = '/images/qr-code.png'; // Asegúrate de que esta imagen exista en public/images
+    const qrImageUrl = '/images/180.jpeg'; // Asegúrate de que esta imagen exista en public/images
     const link = document.createElement('a');
     link.href = qrImageUrl;
-    link.download = 'qr-code.png'; // Nombre del archivo descargado
+    link.download = '180.jpeg'; // Nombre del archivo descargado
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -155,14 +155,14 @@ export default function XXL() {
         </Box>
       ) : showQRCode ? (
         <Box textAlign="center">
-          <Image src="/images/qr-code.png" alt="QR Code" width={300} height={300} style={{ maxWidth: '100%', height: 'auto' }} />
+          <Image src="/images/180.jpeg" alt="QR Code" width={300} height={300} style={{ maxWidth: '100%', height: 'auto' }} />
           <Button variant="contained" onClick={handleDownloadQRCode} sx={{ mt: 2 }}>
             Descargar QR
           </Button>
           <p>
             Envía el comprobante al número de WhatsApp:
             <Link href="https://wa.me/+59178340060" target="_blank" rel="noopener noreferrer">
-              +54 9 11 5863-1851
+             +591 78340060
             </Link>
           </p>
         </Box>
