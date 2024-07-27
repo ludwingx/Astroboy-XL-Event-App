@@ -19,6 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="google-site-verification" content="mY3UML78nPsdcK5gEzKogHZvbTkw7ZpowmoQOekhcFs" />
+      </head>
+
       <body className={inter.className}>
         <header><Navbar/></header>
         <main>{children}
