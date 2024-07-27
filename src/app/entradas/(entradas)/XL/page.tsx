@@ -59,7 +59,7 @@ export default function XL() {
 
   const handleDownloadQRCode = () => {
     // Crea un enlace para descargar la imagen QR
-    const qrImageUrl = "/images/qr-code.png"; // Asegúrate de tener esta imagen en public/images
+    const qrImageUrl = "/images/90.jpeg"; // Asegúrate de tener esta imagen en public/images
     const link = document.createElement("a");
     link.href = qrImageUrl;
     link.download = "qr-code.png"; // Nombre del archivo descargado
@@ -202,7 +202,7 @@ export default function XL() {
           <p>
             Envía el comprobante al número de WhatsApp:
             <a
-              href="https://wa.me/+5491158631851"
+              href="https://wa.me/+59178340060"
               className={styles.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"

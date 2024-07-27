@@ -25,11 +25,11 @@ const CompletedPageContent: FC = () => {
         </Container>
       );
     case 'XL':
-      qrImage = '/images/qrfake.svg'; // Verifica que esta imagen esté en el directorio `public`
+      qrImage = '/images/90.jpeg'; // Verifica que esta imagen esté en el directorio `public`
       price = '90 Bs';
       break;
     case 'XXL':
-      qrImage = '/images/qrfake.svg'; // Verifica que esta imagen esté en el directorio `public`
+      qrImage = '/images/180.jpeg'; // Verifica que esta imagen esté en el directorio `public`
       price = '180 Bs';
       break;
     default:
@@ -52,12 +52,12 @@ const CompletedPageContent: FC = () => {
       <Typography variant="body1" mt={2}>
         El comprobante de pago debe ser enviado al número de WhatsApp:
         <Link
-          href="https://wa.me/+5491158631851"
+          href="https://wa.me/+59178340060"
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: 'red' }}
         >
-          +54 9 11 5863-1851
+        <span> +591 78340060 </span>
         </Link>
         para confirmar la compra.
       </Typography>
@@ -65,7 +65,7 @@ const CompletedPageContent: FC = () => {
         <Button
           variant="contained"
           color="error"
-          href="https://wa.me/+5491158631851"
+          href="https://wa.me/+59178340060"
           target="_blank"
           rel="noopener noreferrer"
         >

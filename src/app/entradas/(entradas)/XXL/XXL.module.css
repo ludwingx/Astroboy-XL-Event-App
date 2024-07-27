@@ -1,0 +1,12 @@
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.cardMedia {
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .cardMedia {
+  transform: scale(1.1); /* Ajusta el valor de la escala según sea necesario */
+}

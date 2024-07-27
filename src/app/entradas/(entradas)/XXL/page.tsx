@@ -6,7 +6,10 @@ import Link from 'next/link';
 import RegistrationForm from '@/components/form/RegistrationForm';
 import { ticketsLinks } from '@/utils/ticketsLinks';
 import Image from 'next/image';
+import { FaWhatsapp } from 'react-icons/fa';
+import styles from './XXL.module.css'; // Usar los estilos de XL
 
+// Opciones de kit
 const kitOptions = [
   { id: '1', name: 'Kit 1', image: '/images/kitOne.svg' },
   { id: '2', name: 'Kit 2', image: '/images/kitTwo.svg' },
@@ -18,7 +21,6 @@ export default function XXL() {
   const [formVisible, setFormVisible] = useState(false);
   const [showQRCode, setShowQRCode] = useState(false);
   const [isClient, setIsClient] = useState(false);
-  const [imageLoading, setImageLoading] = useState(true);
 
   useEffect(() => {
     setIsClient(true);
@@ -49,7 +51,7 @@ export default function XXL() {
     const qrImageUrl = '/images/qr-code.png'; // Asegúrate de que esta imagen exista en public/images
     const link = document.createElement('a');
     link.href = qrImageUrl;
-    link.download = 'qr-code.png';
+    link.download = 'qr-code.png'; // Nombre del archivo descargado
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -59,13 +61,16 @@ export default function XXL() {
     return <div>Cargando...</div>;
   }
 
+  const selectedCategory = 'XXL';
+
   return (
-    <Container maxWidth="sm" style={{ marginTop: '2rem', marginBottom: '4rem' }}>
+    <Container maxWidth="md" sx={{ marginTop: '2rem', marginBottom: '3rem' }}>
       <Box textAlign="center" mb={4}>
         <Typography variant="h6">
-          Elegiste: {ticketsLinks[2].text}
+          Elegiste: {ticketsLinks.find((link) => link.category === selectedCategory)?.text || 'Ninguna categoría seleccionada'}
         </Typography>
       </Box>
+
       {!formVisible && !showQRCode ? (
         <Box mb={4}>
           <Typography variant="h6" gutterBottom textAlign="center">
@@ -74,63 +79,47 @@ export default function XXL() {
           <Box display="flex" flexDirection="column" alignItems="center">
             <Box
               display="grid"
-              gridTemplateColumns="repeat(auto-fit, minmax(200px, 1fr))"
+              gridTemplateColumns={{
+                xs: 'repeat(auto-fit, minmax(200px, 1fr))', // Para pantallas pequeñas
+                sm: 'repeat(auto-fit, minmax(200px, 1fr))', // Para pantallas medianas
+                md: selectedKit ? '1fr' : 'repeat(3, 1fr)', // Para pantallas grandes
+              }}
+              justifyContent="center"
+              alignItems="center"
               gap={2}
               mb={2}
             >
               {kitOptions.map((kit) => (
-                selectedKit === kit.name ? (
-                  <Card
-                    key={kit.id}
-                    sx={{
-                      maxWidth: 345,
-                      cursor: 'pointer',
-                      border: '2px solid red',
-                      transition: 'opacity 0.5s ease, border 0.3s ease',
-                    }}
-                    onClick={() => handleKitSelect(kit.name)}
-                  >
-                    {imageLoading && <Typography textAlign="center">Cargando...</Typography>}
-                    <CardMedia
-                      component="img"
-                      height="140"
-                      image={kit.image}
-                      alt={kit.name}
-                      onLoad={() => setImageLoading(false)}
-                      sx={{ objectFit: 'cover', display: imageLoading ? 'none' : 'block' }}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {kit.name}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                ) : selectedKit === null && (
-                  <Card
-                    key={kit.id}
-                    sx={{
-                      maxWidth: 345,
-                      cursor: 'pointer',
-                      transition: 'opacity 0.5s ease, border 0.3s ease',
-                    }}
-                    onClick={() => handleKitSelect(kit.name)}
-                  >
-                    {imageLoading && <Typography textAlign="center">Cargando...</Typography>}
-                    <CardMedia
-                      component="img"
-                      height="140"
-                      image={kit.image}
-                      alt={kit.name}
-                      onLoad={() => setImageLoading(false)}
-                      sx={{ objectFit: 'cover', display: imageLoading ? 'none' : 'block' }}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {kit.name}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                )
+                <Card
+                  key={kit.id}
+                  sx={{
+                    maxWidth: 345,
+                    cursor: 'pointer',
+                    border: selectedKit === kit.name ? '2px solid red' : 'none',
+                    opacity: selectedKit && selectedKit !== kit.name ? 0.6 : 1,
+                    transition: 'opacity 0.5s ease, border 0.3s ease, box-shadow 0.3s ease',
+                    display: selectedKit === null || selectedKit === kit.name ? 'block' : 'none',
+                    '&:hover': {
+                      boxShadow: '0 0 15px 5px rgba(255, 0, 0, 0.6)', // Efecto de resplandor rojo al pasar el ratón
+                    },
+                    margin: 'auto 1rem', // Centra la tarjeta
+
+                  }}
+                  onClick={() => handleKitSelect(kit.name)}
+                >
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={kit.image}
+                    alt={kit.name}
+                    sx={{ objectFit: 'cover' }}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" align="center" component="div">
+                      {kit.name}
+                    </Typography>
+                  </CardContent>
+                </Card>
               ))}
             </Box>
             {selectedKit && (
@@ -157,7 +146,7 @@ export default function XXL() {
         </Box>
       ) : formVisible ? (
         <Box>
-          <RegistrationForm category="XXL" merch={selectedKit || ""} />
+          <RegistrationForm category={selectedCategory} merch={selectedKit || ''} />
           <Box textAlign="center" mt={2}>
             <Button variant="outlined" color="error" onClick={() => setFormVisible(false)}>
               Volver a escoger el kit
@@ -172,7 +161,7 @@ export default function XXL() {
           </Button>
           <p>
             Envía el comprobante al número de WhatsApp:
-            <Link href="https://wa.me/+5491158631851" target="_blank" rel="noopener noreferrer">
+            <Link href="https://wa.me/+59178340060" target="_blank" rel="noopener noreferrer">
               +54 9 11 5863-1851
             </Link>
           </p>
