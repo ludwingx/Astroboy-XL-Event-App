@@ -12,10 +12,11 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { FaSpotify } from "react-icons/fa"; // Importar el icono de Spotify
 import { FaSoundcloud } from "react-icons/fa"; // Importa el icono de SoundCloud
-
+import GithubIcon from "@mui/icons-material/GitHub";
 const contributors = [
   {
     name: "Tyan XL",
+    profetion: "Artista y Compositor",
     instagram: "https://www.instagram.com/tyan.xl/",
     youtube: "https://www.youtube.com/@tyanxl",
     soundCloud: "https://soundcloud.com/kid-tyan",
@@ -24,13 +25,16 @@ const contributors = [
   },
   {
     name: "Trucho",
-    instagram: "https://www.instagram.com/trucho",
-    youtube: "https://www.youtube.com/@trucho",
+    profetion: "Tienda de ropa",
+    instagram: "https://www.instagram.com/trucho_clothing/",
+    youtube: "https://www.youtube.com/@truchostudios?si=-irCLArtcFr1IC2r",
     photo: "/images/truchoPhoto.svg",
   },
   {
     name: "Ludwing",
+    profetion: "Desarrollador Web",
     instagram: "https://www.instagram.com/luwin_dev/",
+    github: "https://github.com/ludwingx",
     photo: "/images/ludwingPhoto.jpg",
   },
   // Añade más contribuidores según sea necesario
@@ -73,7 +77,8 @@ export default function Contributors() {
                   gap: 1,
                 }}
               >
-                <Typography variant="h6">{contributor.name}</Typography>
+                <Typography variant="h5">{contributor.name}</Typography>
+                <Typography  color="error" style={{fontSize: '14px'}}>{contributor.profetion}</Typography>
                 <Box display="flex" justifyContent="center" gap={1}>
                   {contributor.instagram && (
                     <IconButton
@@ -162,6 +167,28 @@ export default function Contributors() {
                       rel="noopener noreferrer"
                     >
                       <FaSpotify />
+                    </IconButton>
+                  )}
+                  {contributor.github && (
+                    <IconButton
+                      sx={{
+                        borderRadius: "50%",
+                        width: 40,
+                        height: 40,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        "&:hover": {
+                          backgroundColor: "rgba(0, 0, 0, 0.08)",
+                          transform: "scale(1.2)",
+                          color: "red",
+                        },
+                      }}
+                      href={contributor.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <GithubIcon />
                     </IconButton>
                   )}
                 </Box>
