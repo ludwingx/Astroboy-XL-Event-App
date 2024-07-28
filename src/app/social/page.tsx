@@ -13,6 +13,7 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import { FaSpotify } from "react-icons/fa"; // Importar el icono de Spotify
 import { FaSoundcloud } from "react-icons/fa"; // Importa el icono de SoundCloud
 import GithubIcon from "@mui/icons-material/GitHub";
+import LinkedinIcon from "@mui/icons-material/LinkedIn";
 const contributors = [
   {
     name: "Tyan XL",
@@ -35,6 +36,7 @@ const contributors = [
     profetion: "Desarrollador Web",
     instagram: "https://www.instagram.com/luwin_dev/",
     github: "https://github.com/ludwingx",
+    linkedin: "https://www.linkedin.com/in/ludwingarmijosaavedra/",
     photo: "/images/ludwingPhoto.jpg",
   },
   // Añade más contribuidores según sea necesario
@@ -102,7 +104,29 @@ export default function Contributors() {
                       <InstagramIcon />
                     </IconButton>
                   )}
+                  {contributor.linkedin && (
+                    <IconButton
+                      sx={{
+                        borderRadius: "50%",
+                        width: 40,
+                        height: 40,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        "&:hover": {
+                          backgroundColor: "rgba(0, 0, 0, 0.08)",
+                          transform: "scale(1.2)",
+                          color: "red",
+                        },
+                      }}
+                      href={contributor.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <LinkedinIcon />
+                    </IconButton>
 
+                  )}
                   {contributor.youtube && (
                     <IconButton
                       sx={{
