@@ -9,12 +9,29 @@ import { ticketsLinks } from '@/utils/ticketsLinks';
 export default function L() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [isLFull, setIsLFull] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
+    const checkCategoryL = async () => {
+      try {
+        const response = await fetch('/api/countL');
+        const data = await response.json();
+        if (data.count >= 100) {
+          setIsLFull(true);
+        }
+      } catch (error) {
+        console.error('Error fetching L category count:', error);
+      }
+    };
+    checkCategoryL();
   }, []);
 
   const handleFormSubmit = (formData: any) => {
+    if (isLFull) {
+      alert("No hay más entradas disponibles para la categoría L");
+      return;
+    }
     console.log('Formulario enviado para L', formData);
     setFormSubmitted(true);
   };
@@ -33,8 +50,15 @@ export default function L() {
         </Typography>
       </Box>
       {!formSubmitted ? (
-        <RegistrationForm
-          category={selectedCategory} merch={''}  />
+        isLFull ? (
+          <Box textAlign="center">
+            <Typography variant="h5" gutterBottom>
+              Lo sentimos, no hay más entradas disponibles para la categoría L.
+            </Typography>
+          </Box>
+        ) : (
+          <RegistrationForm category={selectedCategory} merch={''}  />
+        )
       ) : (
         <Box textAlign="center">
           <Typography variant="h5" gutterBottom>

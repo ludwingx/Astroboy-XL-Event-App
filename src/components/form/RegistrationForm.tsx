@@ -1,6 +1,6 @@
 import { TextField, Button, Box, Typography } from "@mui/material";
 import styles from "./RegistrationForm.module.css";
-import { createClient } from '@/app/api/actions/actions';
+import { createClient } from '@/app/api/actions';
 import { useRouter } from 'next/navigation';
 
 interface RegistrationFormProps {
