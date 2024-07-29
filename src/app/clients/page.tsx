@@ -1,18 +1,20 @@
 import prisma from "@/lib/db";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Box
-} from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box } from "@mui/material"; // Asegúrate de incluir Box
 import { format } from "date-fns";
+import CategoryCount from "@/components/categoryCount/CategoryCount";
 
 async function Clients() {
   const clients = await prisma.clients.findMany();
+
+  // Contar los clientes por categoría
+  const categoryCounts = clients.reduce((acc, client) => {
+    const category = client.category || 'Otros'; // Usa 'Otros' si la categoría no está definida
+    acc[category] = (acc[category] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+
+  // Definir el orden deseado de las categorías
+  const categoryOrder = ['L', 'XL', 'XXL', 'Otros'];
 
   return (
     <div>
@@ -35,22 +37,27 @@ async function Clients() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {clients.map((clients) => (
-              <TableRow key={clients.id}>
-                <TableCell>{clients.id}</TableCell>
-                <TableCell>{clients.name}</TableCell>
-                <TableCell>{clients.lastname}</TableCell>
-                <TableCell>{clients.email}</TableCell>
-                <TableCell>{clients.phone}</TableCell>
-                <TableCell>{clients.category}</TableCell>
-                <TableCell>{clients.merch}</TableCell>
-                <TableCell>{clients.created_at ? format(new Date(clients.created_at),  'dd/MM/yyyy') : 'N/A'}</TableCell>
-                <TableCell>{clients.created_at ? format(new Date(clients.created_at),  'HH:mm:ss') : 'N/A' }</TableCell >
+            {clients.map((client) => (
+              <TableRow key={client.id}>
+                <TableCell>{client.id}</TableCell>
+                <TableCell>{client.name}</TableCell>
+                <TableCell>{client.lastname}</TableCell>
+                <TableCell>{client.email}</TableCell>
+                <TableCell>{client.phone}</TableCell>
+                <TableCell>{client.category}</TableCell>
+                <TableCell>{client.merch}</TableCell>
+                <TableCell>{client.created_at ? format(new Date(client.created_at), 'dd/MM/yyyy') : 'N/A'}</TableCell>
+                <TableCell>{client.created_at ? format(new Date(client.created_at), 'HH:mm:ss') : 'N/A'}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <CategoryCount
+        total={clients.length}
+        categoryCounts={categoryCounts}
+        categoryOrder={categoryOrder}
+      />
     </div>
   );
 }
