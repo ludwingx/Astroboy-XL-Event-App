@@ -1,6 +1,6 @@
 "use server";
-import prisma from "@/lib/db";
-import { NextResponse } from 'next/server'; // Importing NextResponse
+import prisma from '@/lib/db';
+import { redirect } from 'next/navigation';
 
 export async function createClient(formData: FormData) {
   const name = formData.get("name")?.toString();
@@ -8,15 +8,17 @@ export async function createClient(formData: FormData) {
   const email = formData.get("email")?.toString();
   const phone = formData.get("phone")?.toString();
   const category = formData.get("category")?.toString();
-  const merch = formData.get("merch")?.toString() || 'Ninguno';
+  const merch = formData.get("merch")?.toString() || 'Ninguno'; // Default value if merch is null or undefined
 
+  // Verificación de los campos requeridos
   if (!name || !lastname || !email || !phone || !category) {
     console.error('Faltan campos en el formulario');
-    return NextResponse.json({ status: 'error', message: 'Faltan campos en el formulario' }, { status: 400 });
+    return { status: 'error', message: 'Faltan campos en el formulario' };
   }
 
   try {
-    await prisma.clients.create({
+    // Creación del nuevo cliente en la base de datos
+    const newClient = await prisma.clients.create({
       data: {
         name,
         lastname,
@@ -24,14 +26,15 @@ export async function createClient(formData: FormData) {
         phone,
         category,
         merch,
-        created_at: new Date(), // Asegúrate de guardar la fecha de creación
       },
     });
 
-    // Returning a response object to indicate success
-    return NextResponse.json({ status: 'success' }, { status: 200 });
+    // Redirigir a "/entradas" después de la creación exitosa
+    redirect('/completado');
+
+    return { status: 'success' };
   } catch (error) {
     console.error('Error al crear el cliente:', error);
-    return NextResponse.json({ status: 'error', message: 'No se pudo crear el cliente' }, { status: 500 });
+    return { status: 'error', message: 'No se pudo crear el cliente' };
   }
 }

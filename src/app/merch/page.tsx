@@ -50,7 +50,7 @@ export default function Merch() {
                     color="error"
                     startIcon={<FaWhatsapp />}
                     component={Link}
-                    href={`https://wa.me/+5491158631851?text=Hola,%20quiero%20pedir%20${encodeURIComponent(item.name)}%20por%20${item.price}`}
+                    href={`https://wa.me/+59178340060?text=Hola,%20quiero%20pedir%20${encodeURIComponent(item.name)}%20por%20${item.price}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

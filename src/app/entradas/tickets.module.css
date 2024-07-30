@@ -35,6 +35,17 @@
   border: 2px solid var(--color-text-primary); /* Usa la variable de color definida */
   border-radius: 0.5rem; /* Ajusta el radio del borde según sea necesario */
   transition: all 0.3s ease; /* Transición suave para efectos */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para mejorar la apariencia */
+
+  width: 100%;
+
 }
 
 .button:hover {
