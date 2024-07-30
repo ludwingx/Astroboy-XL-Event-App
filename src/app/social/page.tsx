@@ -14,6 +14,8 @@ import { FaSpotify } from "react-icons/fa"; // Importar el icono de Spotify
 import { FaSoundcloud } from "react-icons/fa"; // Importa el icono de SoundCloud
 import GithubIcon from "@mui/icons-material/GitHub";
 import LinkedinIcon from "@mui/icons-material/LinkedIn";
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+
 const contributors = [
   {
     name: "Tyan XL",
@@ -35,6 +37,7 @@ const contributors = [
     name: "Ludwing",
     profetion: "Desarrollador Web",
     instagram: "https://www.instagram.com/luwin_dev/",
+    portfolio: "https://my-portfolio-ludwingxs-projects.vercel.app/",
     github: "https://github.com/ludwingx",
     linkedin: "https://www.linkedin.com/in/ludwingarmijosaavedra/",
     photo: "/images/ludwingPhoto.jpg",
@@ -69,7 +72,7 @@ export default function Contributors() {
                   objectFit: "cover",
                 }}
                 image={contributor.photo}
-                alt={`${contributor.name}'s photo`}
+                aria-label={`${contributor.name}'s photo`}
               />
               <CardContent
                 sx={{
@@ -80,7 +83,9 @@ export default function Contributors() {
                 }}
               >
                 <Typography variant="h5">{contributor.name}</Typography>
-                <Typography  color="error" style={{fontSize: '14px'}}>{contributor.profetion}</Typography>
+                <Typography color="error" style={{ fontSize: "14px" }}>
+                  {contributor.profetion}
+                </Typography>
                 <Box display="flex" justifyContent="center" gap={1}>
                   {contributor.instagram && (
                     <IconButton
@@ -92,16 +97,40 @@ export default function Contributors() {
                         justifyContent: "center",
                         alignItems: "center",
                         "&:hover": {
-                          backgroundColor: "rgba(0, 0, 0, 0.08)", // Color de fondo al pasar el mouse
-                          transform: "scale(1.2)", // Efecto de zoom
+                          backgroundColor: "rgba(0, 0, 0, 0.08)",
+                          transform: "scale(1.2)",
                           color: "red",
                         },
                       }}
                       href={contributor.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`Instagram de ${contributor.name}`}
                     >
-                      <InstagramIcon />
+                      <InstagramIcon aria-label="Instagram" />
+                    </IconButton>
+                  )}
+                  {contributor.portfolio && (
+                    <IconButton
+                      sx={{
+                        borderRadius: "50%",
+                        width: 40,
+                        height: 40,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        "&:hover": {
+                          backgroundColor: "rgba(0, 0, 0, 0.08)",
+                          transform: "scale(1.2)",
+                          color: "red",
+                        },
+                      }}
+                      href={contributor.portfolio}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Portfolio de ${contributor.name}`}
+                    >
+                      <HomeRepairServiceIcon aria-label="Portfolio" />
                     </IconButton>
                   )}
                   {contributor.linkedin && (
@@ -122,10 +151,10 @@ export default function Contributors() {
                       href={contributor.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`LinkedIn de ${contributor.name}`}
                     >
-                      <LinkedinIcon />
+                      <LinkedinIcon aria-label="LinkedIn" />
                     </IconButton>
-
                   )}
                   {contributor.youtube && (
                     <IconButton
@@ -145,8 +174,9 @@ export default function Contributors() {
                       href={contributor.youtube}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`YouTube de ${contributor.name}`}
                     >
-                      <YouTubeIcon />
+                      <YouTubeIcon aria-label="YouTube" />
                     </IconButton>
                   )}
                   {contributor.soundCloud && (
@@ -167,8 +197,9 @@ export default function Contributors() {
                       href={contributor.soundCloud}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`SoundCloud de ${contributor.name}`}
                     >
-                      <FaSoundcloud />
+                      <FaSoundcloud aria-label="SoundCloud" />
                     </IconButton>
                   )}
                   {contributor.spotify && (
@@ -189,8 +220,9 @@ export default function Contributors() {
                       href={contributor.spotify}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`Spotify de ${contributor.name}`}
                     >
-                      <FaSpotify />
+                      <FaSpotify aria-label="Spotify" />
                     </IconButton>
                   )}
                   {contributor.github && (
@@ -211,8 +243,9 @@ export default function Contributors() {
                       href={contributor.github}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`GitHub de ${contributor.name}`}
                     >
-                      <GithubIcon />
+                      <GithubIcon aria-label="GitHub" />
                     </IconButton>
                   )}
                 </Box>

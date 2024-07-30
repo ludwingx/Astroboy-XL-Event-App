@@ -1,0 +1,37 @@
+.card {
+  position: relative; /* Make sure the Card is positioned relative to its content */
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Hide anything that overflows the Card */
+}
+
+.cardMediaWrapper {
+  position: absolute; /* Position the image wrapper absolutely */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden; /* Hide overflow from the image */
+}
+
+.cardMedia {
+  position: absolute; /* Position the image absolutely */
+  top: 50%;
+  left: 50%;
+  width: 100%; /* Full width */
+  height: auto; /* Auto height to maintain aspect ratio */
+  transform: translate(-50%, -50%); /* Center the image */
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.card:hover .cardMedia {
+  transform: scale(1.2) translate(-50%, -50%); /* Scale the image on hover */
+}
+
+.cardContent {
+  position: relative; /* Ensure that card content is positioned relative to its parent */
+  z-index: 1; /* Keep card content above the image */
+}
