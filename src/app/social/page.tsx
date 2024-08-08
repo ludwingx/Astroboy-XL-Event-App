@@ -14,8 +14,9 @@ import { FaSpotify } from "react-icons/fa"; // Importar el icono de Spotify
 import { FaSoundcloud } from "react-icons/fa"; // Importa el icono de SoundCloud
 import GithubIcon from "@mui/icons-material/GitHub";
 import LinkedinIcon from "@mui/icons-material/LinkedIn";
-import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
-
+import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
+import { FaTiktok } from "react-icons/fa"; // Importa el icono de TikTok
+import FacebookIcon from '@mui/icons-material/Facebook';
 const contributors = [
   {
     name: "Tyan XL",
@@ -23,7 +24,8 @@ const contributors = [
     instagram: "https://www.instagram.com/tyan.xl/",
     youtube: "https://www.youtube.com/@tyanxl",
     soundCloud: "https://soundcloud.com/kid-tyan",
-    spotify: "https://open.spotify.com/intl-es/artist/0CwAkk201F5GOYyUbcv6f9?si=WQPmdH8WQX2muoWFi_sADA&nd=1&dlsi=faa159ebf1df4850",
+    spotify:
+      "https://open.spotify.com/intl-es/artist/0CwAkk201F5GOYyUbcv6f9?si=WQPmdH8WQX2muoWFi_sADA&nd=1&dlsi=faa159ebf1df4850",
     photo: "/images/tyanPhoto.svg",
   },
   {
@@ -41,6 +43,26 @@ const contributors = [
     github: "https://github.com/ludwingx",
     linkedin: "https://www.linkedin.com/in/ludwingarmijosaavedra/",
     photo: "/images/ludwingPhoto.jpg",
+  },
+  {
+    name: "Koketa",
+    profetion: "Artista",
+    instagram: "https://www.instagram.com/koketa.music.bo/",
+    photo: "/images/koketaPhoto.jpg",
+  },
+  {
+    name: "Casa Grande",
+    profetion: "Cochabamba",
+    instagram: "https://www.instagram.com/casagrande.cocha/",
+    facebook: "https://www.facebook.com/people/Casa-Grande-Cochabamba/61552311012032/",
+    tiktok: "https://www.tiktok.com/@casagrande.cocha",
+    photo: "/images/casaGrandePhoto.jpg",
+  },
+  {
+    name: "DJ JC",
+    profetion: "DJ",
+    instagram: "https://www.instagram.com/jalim_carva/",
+    photo: "/images/djJCPhoto.jpg",
   },
   // Añade más contribuidores según sea necesario
 ];
@@ -131,6 +153,54 @@ export default function Contributors() {
                       aria-label={`Portfolio de ${contributor.name}`}
                     >
                       <HomeRepairServiceIcon aria-label="Portfolio" />
+                    </IconButton>
+                  )}
+                  {contributor.tiktok && (
+                    <IconButton
+                      sx={{
+                        borderRadius: "50%",
+                        width: 40,
+                        height: 40,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        "&:hover": {
+                          backgroundColor: "rgba(0, 0, 0, 0.08)",
+                          transform: "scale(1.2)",
+                          color: "red",
+                        },
+                      }}
+                      href={contributor.tiktok}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`TikTok de ${contributor.name}`}
+                    >
+                      <FaTiktok aria-label="TikTok" />
+                    </IconButton>
+                  )}
+                  {contributor.facebook && (
+                    <IconButton
+                      sx={{
+
+                        borderRadius: "50%",
+                        width: 40,
+                        height: 40,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        "&:hover": {
+                          backgroundColor: "rgba(0, 0, 0, 0.08)",
+                          transform: "scale(1.2)",
+                          color: "red",
+                        },
+                      }}
+                      href={contributor.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Facebook de ${contributor.name}`}
+                    >
+                      <FacebookIcon aria-label="Facebook" />
+
                     </IconButton>
                   )}
                   {contributor.linkedin && (
