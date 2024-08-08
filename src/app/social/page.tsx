@@ -36,7 +36,7 @@ const contributors = [
   {
     name: "Ludwing",
     profetion: "Desarrollador Web",
-    instagram: "https://www.instagram.com/luwin_dev/",
+    instagram: "https://www.instagram.com/ludwing_dev/",
     portfolio: "https://my-portfolio-ludwingxs-projects.vercel.app/",
     github: "https://github.com/ludwingx",
     linkedin: "https://www.linkedin.com/in/ludwingarmijosaavedra/",

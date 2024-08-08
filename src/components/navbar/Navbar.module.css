@@ -45,3 +45,10 @@
     gap: 0.75rem; /* Espacio entre los enlaces */
   }
 }
+.image {
+  width: auto; /* Ensure the image keeps its aspect ratio */
+  height: auto;
+  max-width: 4rem;
+  max-height: 4rem;
+
+}

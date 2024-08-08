@@ -1,4 +1,15 @@
 /* styles/tickets.module.css */
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .container {
   background-color: var(--color-neutral-1);
   color: var(--color-text-primary);
@@ -12,13 +23,14 @@
   box-sizing: border-box; /* Incluye padding en el tamaño total del contenedor */
 }
 
-.title {
-  font-size: 2rem; /* Ajusta el tamaño del texto según sea necesario */
+.title2 {
+  font-size: 1.7rem; /* Ajusta el tamaño del texto según sea necesario */
   margin-bottom: 1rem; /* Ajusta el margen inferior según sea necesario */
+  animation: pulsate 1.5s infinite;
 }
 
 .buttonsContainer {
-  padding: 2rem;
+  padding: 2rem 0 10rem 0;
   display: flex;
   flex-direction: column; /* Asegura que los botones se apilen verticalmente */
   gap: 1rem; /* Espacio entre los botones */
@@ -27,7 +39,7 @@
 .button {
   background-color: var(--color-text-primary); /* Usa la variable de color definida */
   color: var(--color-neutral-1); /* Usa la variable de color definida */
-  padding: 1rem ;
+  padding: 1rem 0 ;
   text-align: center;
   font-size: 1rem;
   text-decoration: none;
@@ -47,10 +59,32 @@
   width: 100%;
 
 }
+.button:hover{
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: red;
+  border: 0cap;
+  color: white;
+}
 
-.button:hover {
-  background-color: var(--color-primary); /* Cambia el color de fondo al pasar el cursor */
-  color: var(--color-neutral-1); /* Cambia el color del texto al pasar el cursor */
-  border: 2px solid var(--color-primary);
-  transform: scale(1.05); /* Añade un efecto de zoom suave */
+.textContainer {
+  text-align: center;
+  margin-bottom: 2rem; /* Ajusta el margen inferior según sea necesario */
+  padding: 6rem 0 15rem 0  ;
+}
+
+.title {
+  font-size: 3rem; /* Ajusta el tamaño del texto */
+  font-weight: bold;
+  margin-bottom: 1rem; /* Ajusta el margen inferior */
+  color: black;
+}
+
+.subtitle {
+  font-size: 24px; /* Ajusta el tamaño del texto */
+  color: var(--color-text-primary); /* Usa la variable de color definida */
+}
+.subtitle2 {
+  font-size: 16px; /* Ajusta el tamaño del texto */
+  color: var(--color-text-secondary); /* Usa la variable de color definida */
 }

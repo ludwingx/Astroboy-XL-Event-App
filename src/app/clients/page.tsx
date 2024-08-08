@@ -26,11 +26,11 @@ async function Clients() {
           <TableHead>
             <TableRow>
               <TableCell sx={{ width: '5%' }}>ID</TableCell>
-              <TableCell sx={{ width: '10%' }}>Name</TableCell>
-              <TableCell sx={{ width: '10%' }}>Last Name</TableCell>
+              <TableCell sx={{ width: '10%' }}>Nombre</TableCell>
+              <TableCell sx={{ width: '10%' }}>Apellidos</TableCell>
               <TableCell sx={{ width: '20%' }}>Email</TableCell>
-              <TableCell sx={{ width: '10%' }}>Phone</TableCell>
-              <TableCell sx={{ width: '10%' }}>Category</TableCell>
+              <TableCell sx={{ width: '10%' }}>Celular</TableCell>
+              <TableCell sx={{ width: '10%' }}>Categoria</TableCell>
               <TableCell sx={{ width: '10%' }}>Merch</TableCell>
               <TableCell sx={{ width: '15%' }}>Fecha de creación</TableCell>
               <TableCell sx={{ width: '15%' }}>Hora de creación</TableCell>

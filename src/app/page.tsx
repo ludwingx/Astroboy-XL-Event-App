@@ -1,10 +1,10 @@
-import Evento from "./evento/Evento";
+import Entradas from "./entradas/Entradas";
 
 export default function Home() {
   return (
     <div>
       <main>
-        <Evento/>
+        <Entradas/>
 
       </main>
     </div>
